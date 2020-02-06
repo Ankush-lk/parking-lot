@@ -53,7 +53,7 @@ class ticket_dict_class:
     def __init__(self):
         # self.dictionary = dict()
         pass
-
+getNoOfVacantSpots
     def get_dictionary(self):
         return dict()
 
