@@ -29,7 +29,6 @@ class parking_lot:
         return self.lot_list
 
     def add_spot(self, spotID, vehicle):
-        # for i in range(0, 4):
         self.lot_list[spotID] = vehicle
         self.occupied_count += 1
         self.cur_spot += 1
