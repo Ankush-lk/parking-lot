@@ -112,10 +112,10 @@ class Ticket:
         return data
 
 
-ticket_dict_instance = ticket_dict_class
-ticket_dict = ticket_dict_instance.get_dictionary()
+# ticket_dict_instance = ticket_dict_class
+# ticket_dict = ticket_dict_instance.get_dictionary()
 
-# ticket_dict = dict()
+ticket_dict = dict()
 
 lot = parking_lot(10)
 l1 = lot.get_parking_list
@@ -176,7 +176,7 @@ ticket2.checkout(ticket_dict, lot.lot_list)
 print(lot.lot_list)
 print(lot.get_slot_details(0))
 
-def add_vehicle(ticket_dict, veh_colour, veh_regNo, veg_type):
+def add_vehicle(ticket_dict, lot, veh_colour, veh_regNo, veg_type):
     vehicle_object = Vehicle(veh_regNo, veh_colour, veg_type)
     empty_spotID = lot.find_empty_spot()
     lot.add_spot(empty_spotID, vehicle_object)
@@ -185,7 +185,10 @@ def add_vehicle(ticket_dict, veh_colour, veh_regNo, veg_type):
     print("Ticket successfully created")
     print(ticket_object.get_all_values())
     print()
-    return ticket_object.ticketID
+    return ticket_object
 
 
-print(add_vehicle(ticket_dict, 'blue', 'qwer8465', '0'))
+# print(add_vehicle(ticket_dict, lot, 'blue', 'qwer8465', '0'))
+tick_obj = add_vehicle(ticket_dict, lot, 'blue', 'qwer8465', '0')
+spotID_new_vehicle = tick_obj.spotID
+print(lot.get_slot_details(spotID_new_vehicle))
