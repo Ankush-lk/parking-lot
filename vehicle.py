@@ -1,5 +1,7 @@
 import uuid
-import datetime
+from datetime import datetime
+
+
 
 class Vehicle:
     def __init__(self, regNo, colour, vehicle_type):
@@ -23,12 +25,15 @@ class parking_lot:
 
     # def get_vacant_count(self):
 
+    def get_parking_list(self):
+        return self.lot_list
+
     def add_spot(self, spotID):
         # for i in range(0, 4):
         self.lot_list[spotID] = 1
         return self.lot_list
 
-    def find_empty_spot(self, cur_spot):
+    def find_empty_spot(self, cur_spot=0):
         if self.lot_list[cur_spot] == 0:
             return cur_spot
         else:
@@ -46,32 +51,45 @@ class ticket_dict:
     def create_dict(self):
         return dict()
 
-class Ticket(ticket_dict):
+ticket_dict = dict()
 
+class Ticket:
 
     def __init__(self):
         self.ticketID = uuid.uuid4()
         self.checkinTime = datetime.now()
 
-
-    def create_ticket(self, vehicle):
+    def create_ticket(self, vehicle, slotID, ticket_dict):
         self.vehicle_reg_no = vehicle.regNo
         self.vehicle_type = vehicle.vehicle_type
         self.vehicle_colour = vehicle.colour
+        self.slotID = slotID
         ticket_dict[self.ticketID] = vehicle.regNo
+
         return self.ticketID
 
     def checkout(self, ticketID):
-
         ticket = ticket_dict[ticketID]
         ticket.checkoutTime = datetime.now()
         ticket_dict[ticketID] = ticket
 
 
 lot = parking_lot(10)
-lot.add_spot()
+l1 = lot.get_parking_list
 print(lot.lot_list)
 print(lot.find_empty_spot())
+
 v1 = Vehicle('abcd1234', 'blue', '4')
 print(v1)
-ticket1 = Ticket()
+
+empty_spotID = lot.find_empty_spot()
+lot.add_spot(empty_spotID)
+print(lot.lot_list)
+
+
+ticket1 = Ticket().create_ticket(v1, empty_spotID, ticket_dict)
+print('-----------')
+print(ticket_dict)
+
+print(ticket_dict[ticket1])
+
