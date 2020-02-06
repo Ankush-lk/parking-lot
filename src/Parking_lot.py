@@ -6,5 +6,7 @@ class Parking_lot:
         self.occupied_count = 0
         self.cur_spot = 0
 
-     def populate_lot_dict(self, vehicleID, lot_dict):
-         self.lot_dict
+     def populate_lot_dict(self, vehicleID, lot_dict, cur_spot):
+
+
+
