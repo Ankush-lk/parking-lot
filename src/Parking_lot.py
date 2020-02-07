@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/home/Srivamsi.s/PycharmProjects/parking-lot/src')
-from src.Vehicle import Vehicle as vehicle
+# from src.Vehicle import Vehicle as vehicle
 from src.Vehicle import Car as car
 import datetime
 
