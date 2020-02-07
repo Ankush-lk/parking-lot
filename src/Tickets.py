@@ -3,6 +3,7 @@ import uuid
 from src.Parking_lot import Parking_lot as park
 from src.Vehicle import Car as car
 
+
 class Tickets:
     def __init__(self):
         self.park = park()
@@ -29,10 +30,14 @@ class Tickets:
     def close_ticket(self, ticketID, lot):
         slot = self.ticket_dict[ticketID]
         lot.carCheckOut(slot)
-        del self.ticket_dict[ticketID]
+        try:
+            del self.ticket_dict[ticketID]
+        except KeyError:
+            raise KeyError('Key not found')
 
     # def remove_parking_lot(self):
     #     self.flag = 0
+
 
 '''
 v1 = car('abcd1234', 'red')
