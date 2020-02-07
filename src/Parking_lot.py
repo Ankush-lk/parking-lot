@@ -25,7 +25,7 @@ class Parking_lot:
 
     def find_vacant_spot(self):
         for x in range(0, self.size):
-            if self.lot_list[x] == -1:
+            if self.lot_list[x] == 0:
                 return x
             else:
                 return -1
@@ -42,7 +42,7 @@ class Parking_lot:
 
     def carCheckOut(self, slot):
         self.occupied_count -= 1
-        self.lot_list[slot] = -1
+        self.lot_list[slot] = 0
         self.outTime = datetime.datetime.now()
 
     def find_my_car(self, regno):
