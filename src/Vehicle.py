@@ -1,6 +1,6 @@
 class Vehicle:
     def __init__(self, regNo, colour):
-        self.vehicleID = regNo
+        self.regNo = regNo
         self.colour=colour
 
 

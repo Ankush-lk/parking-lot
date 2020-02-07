@@ -1,5 +1,5 @@
 import uuid
-import src.Parking_lot as park
+from src.Parking_lot import Parking_lot as park
 
 
 class Tickets:
@@ -12,9 +12,9 @@ class Tickets:
 
     def raise_ticket(self, size, regno):
         if self.flag == 0:
-            park.Parking_lot.create_parking_lot(size)
+            park.create_parking_lot(size)
             flag = 1
-        slot = park.Parking_lot.carParked(regno)
+        slot = park.carParked(regno)
         if slot != -1:
             self.ticketID = uuid.uuid4()
             self.lot_dict[self.ticketID] = slot
@@ -31,3 +31,6 @@ class Tickets:
 
     def remove_parking_lot(self):
         self.flag = 0
+
+ticket = Tickets()
+ticket.raise_ticket(10,1)
