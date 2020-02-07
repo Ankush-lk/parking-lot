@@ -27,7 +27,10 @@ class Tickets:
     def close_ticket(self, ticketID):
         slot = self.lot_dict.get(ticketID)
         park.Parking_lot.carCheckOut(slot)
-        del self.lot_dict[ticketID]
+        try:
+            del self.ticket_dict[ticketID]
+        except KeyError:
+            raise KeyError('Key not found')
 
     def remove_parking_lot(self):
         self.flag = 0
